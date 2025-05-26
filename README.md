@@ -20,9 +20,9 @@ O objetivo é permitir que utilizadores escolham uma cifra, insiram texto e cifr
 * Leitura de ficheiros `.txt` para input
 * Escrita de ficheiros `.txt` com o output
 
-![Cifras](/Resources/Cipher.png)
-![César](/assets/images/Caesar.png)
-![Conversão](/assets/images/Conv.png)
+![Cifras](https://github.com/jdpmad/EncrypTool/blob/main/Resources/Cipher.png)
+![César](https://github.com/jdpmad/EncrypTool/blob/main/Resources/Caesar.png)
+![Conversão](https://github.com/jdpmad/EncrypTool/blob/main/Resources/Conv.png)
 
 ---
 
