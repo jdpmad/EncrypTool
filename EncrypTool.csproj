@@ -177,7 +177,6 @@
     <EmbeddedResource Include="Forms\ConversionForm.resx">
       <DependentUpon>ConversionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="EncrypTool_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
