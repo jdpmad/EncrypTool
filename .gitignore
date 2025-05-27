@@ -1,14 +1,23 @@
-# Build results
+# Pastas de build
 [Bb]in/
 [Oo]bj/
 
-# Visual Studio
+# Configurações do Visual Studio
 .vs/
 *.user
 *.suo
 
-# Outros
+# Arquivos binários e temporários
 *.exe
 *.dll
 *.pdb
 *.cache
+
+# Pasta de pacotes NuGet (para não commitares os binários)
+packages/
+
+# Arquivos gerados pelo sistema operacional (opcional, mas útil)
+Thumbs.db
+Desktop.ini
+.DS_Store
+FodyWeavers.xsd
