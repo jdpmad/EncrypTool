@@ -39,7 +39,7 @@ namespace EncrypTool.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Encriptador_e_Desencriptador.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EncrypTool.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -117,6 +117,16 @@ namespace EncrypTool.Properties {
             get {
                 object obj = ResourceManager.GetObject("caesar_cipher", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] menuLoop {
+            get {
+                object obj = ResourceManager.GetObject("menuLoop", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

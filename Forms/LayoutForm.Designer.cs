@@ -98,7 +98,7 @@ namespace EncrypTool
             this.MaximizeBox = false;
             this.Name = "LayoutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Encriptador e Desencriptador";
+            this.Text = "EncrypTool";
             this.Load += new System.EventHandler(this.LayoutForm_Load);
             this.ResumeLayout(false);
 

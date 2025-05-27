@@ -11,7 +11,6 @@ namespace EncrypTool
 {
     public partial class Variables
     {               
-        public static int som = 1; //variável que permite averiguar o estado do som da aplicação
         public static string cifra; //a cifra (césar/tap/morse) 
         public static string currentForm; //o form a ser mostrado atualmente 
         public static int caesarShift; // Número de shifts na cifra de César

@@ -42,6 +42,7 @@ Encriptador e Desencriptador/
 │   ├── Interface/
 │   │   └── ICipher.cs            // Interface comum a todas as cifras
 │   └── Utils/
+│       ├── LoopStream.cs         // Permite dar loop à música 
 │       ├── TextUtils.cs          // Remove acentos e normaliza texto
 │       └── Variables.cs          // Variáveis globais
 │
@@ -120,6 +121,10 @@ Output: "2,2 1,1 4,4 3,4"
 
 ---
 
+## Como instalar
+
+---
+
 ## Como testar a aplicação
 
 1. Executar a aplicação
@@ -146,7 +151,7 @@ Projeto de caráter académico. Uso pessoal e educativo apenas.
 
 ---
 
-## Sobre
+## Dev Notes
 
 Este projeto foi desenvolvido como trabalho académico no ensino secundário na disciplina de API. O interesse em tentar implementar algumas destas cifras fez com que este projeto nascesse e fosse apresentado como trabalho da disciplina, sendo o objetivo deste o desenvolvimento de aplicações gráficas com Windows Forms em C#.
 

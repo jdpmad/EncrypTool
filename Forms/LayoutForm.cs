@@ -1,30 +1,32 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
+using NAudio.Wave;
 
 namespace EncrypTool
 {
     public partial class LayoutForm : Form
     {
+        private WaveOutEvent waveOut;
+        private Mp3FileReader mp3Reader;
         public LayoutForm()
         {
             InitializeComponent();
+
+            TocarMusica();
         }
+
         ConversionForm convForm; //para criar uma variável do tipo do form
         CaesarShiftForm caesarSForm;
         CipherSelectionForm cifSelForm;
         MainMenuForm mMForm;
-        WMPLib.WindowsMediaPlayer wMPlayer = new WMPLib.WindowsMediaPlayer(); //criar uma variável do tipo windows media player (para a música)
 
         public void LayoutForm_Load(object sender, EventArgs e)
         {
             L_b_casa.Hide(); //esconder o botão casa
             l_b_voltar.Hide(); //esconder o botão de voltar atrás
-            wMPlayer.URL = Application.StartupPath.Replace("\\bin\\Debug", "\\Resources\\menuLoop.mp3"); //local da música a ser tocada
-            wMPlayer.settings.volume = 15; //volume (de 0-100)
-            wMPlayer.settings.setMode("loop", true); //definir o loop da música
-
-            Thread.Sleep(1500); //esperar que a música carregue para sincronizar a abertura do programa com o início da música 
 
             convForm = new ConversionForm();
             convForm.MdiParent = this;
@@ -50,21 +52,16 @@ namespace EncrypTool
         private void b_som_Click(object sender, EventArgs e)
         {
             tabFix(); //executar a função
-            if (Variables.som == 0) //se estiver mutado (variável a 0)
+            if (waveOut.Volume == 0) //se estiver mutado (variável a 0)
             {
-                Variables.som = 1; //alterar a variável do som
                 l_b_som.Image = Properties.Resources.button_unmute; //mudar a imagem
-                wMPlayer.settings.mute = false; //desmutar
-                goto stop; //sair da função
+                waveOut.Volume = 0.1f;
             }
             else
             {
-                Variables.som = 0;
                 l_b_som.Image = Properties.Resources.button_mute;
-                wMPlayer.settings.mute = true;
-                goto stop;
+                waveOut.Volume = 0;
             }
-        stop:; //ponto de teletransporte para sair da função
         }
 
         private void c_b_casa_Click(object sender, EventArgs e)
@@ -183,6 +180,40 @@ namespace EncrypTool
                     }
                 }
             }
+        }
+
+        private LoopStream loopStream;
+
+        private void TocarMusica()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            Stream mp3Stream = assembly.GetManifestResourceStream("EncrypTool.Resources.menuLoop.mp3");
+            if (mp3Stream == null)
+            {
+                MessageBox.Show("Arquivo de áudio não encontrado no recurso!");
+                return;
+            }
+
+            Thread.Sleep(1500); //esperar que a música carregue para sincronizar a abertura do programa com o início da música 
+
+            mp3Reader = new Mp3FileReader(mp3Stream);
+
+            loopStream = new LoopStream(mp3Reader);
+
+            waveOut = new WaveOutEvent();
+            waveOut.Init(loopStream);
+            waveOut.Volume = 0.1f; // volume entre 0.0 e 1.0
+            waveOut.Play();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            waveOut?.Stop();
+            waveOut?.Dispose();
+            loopStream?.Dispose();
+            mp3Reader?.Dispose();
         }
     }
 }
