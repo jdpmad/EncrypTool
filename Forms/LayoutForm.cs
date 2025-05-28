@@ -195,8 +195,6 @@ namespace EncrypTool
                 return;
             }
 
-            Thread.Sleep(1500); //esperar que a música carregue para sincronizar a abertura do programa com o início da música 
-
             mp3Reader = new Mp3FileReader(mp3Stream);
 
             loopStream = new LoopStream(mp3Reader);
